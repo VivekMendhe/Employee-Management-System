@@ -1,0 +1,99 @@
+<div
+  class="container mx-auto w-full flex flex-col items-center justify-center h-screen"
+>
+  <h1 class="text-2xl font-bold mb-4">Edit Employee Details</h1>
+  <form (ngSubmit)="submitForm()" class="max-w-lg">
+    <div class="mb-4">
+      <label for="name" class="block text-sm font-medium text-gray-700"
+        >Name</label
+      >
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="employee.name"
+        class="mt-1 block w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        required
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-sm font-medium text-gray-700"
+        >Email</label
+      >
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="employee.email"
+        class="mt-1 block w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        required
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="contact" class="block text-sm font-medium text-gray-700"
+        >Contact</label
+      >
+      <input
+        type="text"
+        id="contact"
+        name="contact"
+        [(ngModel)]="employee.contact"
+        class="mt-1 block w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        required
+      />
+    </div>
+
+    <!-- Address Section -->
+    <div class="mb-4">
+      <h2 class="text-lg font-semibold mb-2">Addresses</h2>
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2">City</th>
+            <th class="px-4 py-2">Effective Date</th>
+            <th class="px-4 py-2">End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (address of employee.addresses; track address) {
+          <tr class="bg-white">
+            <td class="border px-4 py-2">
+              <input
+                type="text"
+                name="city{{ address.city }}"
+                [(ngModel)]="address.city"
+                class="border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </td>
+            <td class="border px-4 py-2">
+              <input
+                type="text"
+                name="effectiveDate{{ address.effectiveDate }}"
+                [(ngModel)]="address.effectiveDate"
+                class="border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </td>
+            <td class="border px-4 py-2">
+              <input
+                type="text"
+                name="endDate{{ address.endDate }}"
+                [(ngModel)]="address.endDate"
+                class="border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <button
+      type="submit"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+    >
+      Save Changes
+    </button>
+  </form>
+</div>

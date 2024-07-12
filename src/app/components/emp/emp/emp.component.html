@@ -1,0 +1,75 @@
+<div class="px-10">
+  <div class="px-10">
+    <div class="flex flex-wrap gap-10 justify-start m-5 px-10">
+      @for (item of emp; track $index) {
+      <div class="bg-white rounded-lg shadow-md p-4 w-96">
+        <div class="flex justify-between mb-2">
+          <h2 class="text-xl font-bold">{{ item.name }}</h2>
+        </div>
+        <div class="text-sm mb-2 flex flex-col gap-y-2">
+          <p><strong>Email:</strong> {{ item.email }}</p>
+          <p><strong>Contact:</strong> {{ item.contact }}</p>
+        </div>
+
+        <!-- <div class="overflow-x-auto max-h-72">
+        <table class="table-auto w-full">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2">City</th>
+              <th class="px-4 py-2">Effective Date</th>
+              <th class="px-4 py-2">End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (address of item.addresses; track $index) {
+            <tr>
+              <td class="border px-4 py-2">{{ address.city }}</td>
+              <td class="border px-4 py-2">{{ address.effectiveDate }}</td>
+              <td class="border px-4 py-2">
+                {{ address.endDate ? address.endDate : "Present" }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div> -->
+
+        <div class="flex justify-start mt-5 mb-2">
+          <button
+            [routerLink]="'/emp/' + item.id"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            View
+          </button>
+          <!-- <button
+          [routerLink]="'/add-address/' + item.id"
+          class="bg-green-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600"
+        >
+          Add Address
+        </button> -->
+        </div>
+      </div>
+
+      }
+    </div>
+
+    <div class="flex gap-x-10">
+      <!-- <div class="fixed bottom-5 right-56">
+        <button
+          [routerLink]="'/add-emp'"
+          class="bg-indigo-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+        >
+          Add Employee
+        </button>
+      </div> -->
+      <div class="fixed bottom-5 right-5">
+        <button
+          [routerLink]="'/add-employee-address'"
+          class="bg-indigo-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+        >
+          Add Employee
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

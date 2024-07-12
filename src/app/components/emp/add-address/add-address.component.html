@@ -1,0 +1,82 @@
+<!-- class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" -->
+<div
+  class="fixed inset-0 flex items-center justify-center"
+  (click)="closeForm()"
+>
+  <div
+    class="w-[500px] mx-auto p-6 bg-white rounded-lg shadow-md"
+    (click)="$event.stopPropagation()"
+  >
+    <button
+      (click)="closeForm()"
+      class="absolute top-0 right-0 mt-4 mr-4 text-gray-600 hover:text-gray-900"
+    >
+      &times;
+    </button>
+    <h2 class="text-2xl font-bold mb-4">Add Address</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="city" class="block text-sm font-medium text-gray-700"
+          >City</label
+        >
+        <input
+          id="city"
+          name="city"
+          type="text"
+          [(ngModel)]="address.city"
+          class="mt-1 block w-full p-3 border border-b rounded-md shadow-sm hover:focus:border-indigo-500 hover:focus:ring-indigo-500 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        />
+      </div>
+
+      <!-- <div class="mb-4">
+      <label for="effectiveDate" class="block text-sm font-medium text-gray-700"
+        >Effective Date</label
+      >
+      <input
+        id="effectiveDate"
+        name="effectiveDate"
+        type="date"
+        [(ngModel)]="address.effectiveDate"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="endDate" class="block text-sm font-medium text-gray-700"
+        >End Date</label
+      >
+      <input
+        id="endDate"
+        name="endDate"
+        type="date"
+        [(ngModel)]="address.endDate"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      />
+    </div> -->
+
+      <!-- <div class="mb-4">
+        <label for="employeeId" class="block text-sm font-medium text-gray-700">Employee ID</label>
+        <input
+          id="employeeId"
+          type="number"
+          formControlName="employeeId"
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        />
+        @if (addressForm.get('employeeId')?.invalid && addressForm.get('employeeId')?.touched) {
+        <div *ngIf="addressForm.get('employeeId')?.invalid && addressForm.get('employeeId')?.touched" class="text-red-500 text-sm">
+          Employee ID is required
+        </div>
+        }
+      </div> -->
+
+      <div class="flex justify-end">
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+        >
+          Add Address
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

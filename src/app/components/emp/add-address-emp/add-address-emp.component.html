@@ -1,0 +1,109 @@
+<div class="max-w-md mx-auto bg-white p-8 rounded-xl mt-20 shadow-lg space-y-4">
+  <h2 class="text-2xl font-bold text-gray-800 text-center">Employee</h2>
+  <form class="space-y-6" (ngSubmit)="submitForm()">
+    <div class="space-y-4">
+      <!-- Employee Name -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700"
+          >Name</label
+        >
+        <input
+          disabled="disabled"
+          type="text"
+          id="name"
+          name="name"
+          [value]="employee.name"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
+        />
+      </div>
+
+      <!-- Employee Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email</label
+        >
+        <input
+          disabled="disabled"
+          type="email"
+          id="email"
+          name="email"
+          [value]="employee.email"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
+        />
+      </div>
+
+      <!-- Employee Contact -->
+      <div>
+        <label for="contact" class="block text-sm font-medium text-gray-700"
+          >Contact</label
+        >
+        <input
+          disabled="disabled"
+          type="text"
+          id="contact"
+          name="contact"
+          [value]="employee.contact"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
+        />
+      </div>
+
+      <!-- Address -->
+      <div>
+        <label for="city" class="block text-sm font-medium text-gray-700"
+          >Address</label
+        >
+
+        <input
+          type="text"
+          id="city"
+          name="city"
+          [(ngModel)]="address.city"
+          [ngClass]="{
+            'focus:ring-red-500 border-red-500': duplicateAddressError,
+            'focus:ring-indigo-500 border-indigo-500': !duplicateAddressError
+          }"
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          required
+        />
+      </div>
+
+      @if (cityError) {
+      <div class="text-red-500 text-sm">*Address has empty data.</div>
+      }
+
+      <!-- Duplicate Address Error Message -->
+      @if (duplicateAddressError) {
+      <div class="text-red-500 text-sm">
+        *This address already exists for the employee.
+      </div>
+
+      }
+    </div>
+
+    <!-- <div class="flex relative">
+        <label for="city" class="block text-sm font-medium text-gray-700"
+          >City</label
+        >
+        <span>         
+          @if (duplicateAddressError) {
+          <div class="text-red-500 text-sm right-0 absolute">
+            * This address already exists for the employee.
+          </div>
+          }</span
+        >
+      </div> -->
+
+    <!-- Submit Button -->
+    <div class="mt-6">
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out transform hover:scale-105"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

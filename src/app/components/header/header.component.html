@@ -1,0 +1,33 @@
+<nav class="bg-blue-600 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="text-white text-xl font-bold">
+      <a [routerLink]="'/'">Home</a>
+    </div>
+    <div class="flex space-x-4">
+      <a
+        [routerLink]="'/emp'"
+        class="text-white text-xl font-bold hover:text-gray-300 hover:underline transition duration-300"
+        routerLinkActive="font-bold"
+        >Employees</a
+      >
+      <!-- <a
+        [routerLink]="'/add-emp'"
+        class="text-white text-xl font-bold hover:text-gray-300 hover:underline transition duration-300"
+        routerLinkActive="font-bold"
+        >Add Employee</a
+      > -->
+      <a
+        [routerLink]="'/add-emp-ahead'"
+        class="text-white text-xl font-bold hover:text-gray-300 hover:underline transition duration-300"
+        routerLinkActive="font-bold"
+        >Add Employee</a
+      >
+      <a
+        [routerLink]="'/get-employee-address'"
+        class="text-white text-xl font-bold hover:text-gray-300 hover:underline transition duration-300"
+        routerLinkActive="font-bold"
+        >Get Address</a
+      >
+    </div>
+  </div>
+</nav>

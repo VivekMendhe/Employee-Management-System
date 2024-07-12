@@ -1,0 +1,216 @@
+@if (emp) {
+
+<div class="flex flex-wrap gap-4 justify-center items-center mt-14 m-5 px-10">
+  @if (!editing) {
+  <div class="bg-white rounded-lg shadow-md p-4 w-1/2">
+    <div class="flex justify-between mb-2">
+      <h2 class="text-xl font-bold">{{ emp.name }}</h2>
+    </div>
+    <div class="text-sm mb-2 flex flex-col gap-y-2">
+      <p><strong>Email:</strong> {{ emp.email }}</p>
+      <p><strong>Contact:</strong> {{ emp.contact }}</p>
+    </div>
+
+    <div
+      class="address-items overflow-x-auto max-h-72 rounded-sm custom-scrollbar"
+    >
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2">City</th>
+            <th class="px-4 py-2">Effective Date</th>
+            <th class="px-4 py-2">End Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (address of emp.addresses; track $index) {
+          <tr class="text-center odd:bg-white even:bg-slate-200">
+            <td class="border px-4 py-2">
+              <span class="w-[80%]">{{ address.city }} </span>
+            </td>
+            <td class="border px-4 py-2">
+              <span class="w-[80%]">{{ address.effectiveDate }}</span>
+            </td>
+            <td class="border px-4 py-2">
+              <span class="w-[80%]">{{
+                address.endDate ? address.endDate : "Present"
+              }}</span>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- [routerLink]="'/edit-emp/' + emp.id" -->
+    <div class="flex gap-2 mt-5">
+      <button
+        (click)="toggleEditing()"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Edit Details
+      </button>
+      <button
+        (click)="deleteEmp()"
+        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+      >
+        Delete
+      </button>
+
+      <!-- (click)="addressFormShown()" -->
+      <!-- <button
+        [routerLink]="'/add-address/' + emp.id"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Add Address
+      </button> -->
+      <!-- <button
+        [routerLink]="'/add-address-emp/' + emp.id"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Add Address
+      </button> -->
+      <!-- <button
+        [routerLink]="'/add-employee-address/' + emp.id"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Add Address
+      </button> -->
+      <button
+        [routerLink]="'/add-employee-address/' + emp.id"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        Add Address
+      </button>
+    </div>
+  </div>
+  }
+
+  <!-- Form view -->
+  @if (editing) {
+  <div class="bg-white rounded-lg shadow-md p-4 w-1/2">
+    <form (ngSubmit)="submitForm()">
+      <div class="flex justify-between mb-2">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="employee.name"
+          class="text-xl font-bold block w-full focus:outline-none"
+          required
+        />
+      </div>
+
+      <div class="text-sm mb-2 flex flex-col gap-y-2">
+        <p class="flex items-center justify-center">
+          <strong>Email:</strong>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="employee.email"
+            class="block w-full ml-1 focus:outline-none sm:text-sm"
+            required
+          />
+        </p>
+        <p class="flex items-center justify-center">
+          <strong>Contact:</strong>
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            [(ngModel)]="employee.contact"
+            class="block w-full ml-1 focus:outline-none sm:text-sm"
+            required
+          />
+        </p>
+      </div>
+
+      <div class="overflow-x-auto max-h-72">
+        <table class="table-auto w-full">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="px-4 py-2">City</th>
+              <th class="px-4 py-2">Effective Date</th>
+              <th class="px-4 py-2">End Date</th>
+            </tr>
+          </thead>
+
+          <!-- <tbody>
+            @for (address of employee.addresses; track address) {
+            <tr class="text-center">
+              <td class="border px-4 py-2">
+                <input
+                  type="text"
+                  name="city{{ address.city }}"
+                  [(ngModel)]="address.city"
+                  class="w-[80%] text-center focus:outline-none"
+                />
+              </td>
+              <td class="border px-4 py-2">
+                <input
+                  type="text"
+                  name="effectiveDate{{ address.effectiveDate }}"
+                  [(ngModel)]="address.effectiveDate"
+                  class="w-[80%] text-center focus:outline-none"
+                />
+              </td>
+              <td class="border px-4 py-2">
+                <input
+                  type="text"
+                  name="endDate{{ address.endDate }}"
+                  [(ngModel)]="address.endDate"
+                  class="w-[80%] text-center focus:outline-none"
+                />
+              </td>
+            </tr>
+            }
+          </tbody> -->
+
+          <tbody>
+            @for (address of emp.addresses; track $index) {
+            <tr class="text-center odd:bg-white even:bg-slate-200">
+              <td class="border px-4 py-2">
+                <span class="w-[80%]">{{ address.city }} </span>
+              </td>
+              <td class="border px-4 py-2">
+                <span class="w-[80%]">{{ address.effectiveDate }}</span>
+              </td>
+              <td class="border px-4 py-2">
+                <span class="w-[80%]">{{
+                  address.endDate ? address.endDate : "Present"
+                }}</span>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex gap-2 mt-5">
+        <button
+          type="submit"
+          (click)="toggleEditing()"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Save Details
+        </button>
+
+        <button
+          type="button"
+          (click)="toggleEditing()"
+          class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-600"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  }
+</div>
+} @if (addressForm) {
+<div>
+  <app-add-address (formClosed)="closeAddBatchForm()"></app-add-address>
+</div>
+}

@@ -1,0 +1,63 @@
+<div
+  class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+>
+  <div class="bg-white rounded-lg p-8 w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4">Edit HR</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Name</label>
+        <input
+          class="w-full p-2 border border-gray-300 rounded"
+          [(ngModel)]="hr.name"
+          name="name"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Email</label>
+        <input
+          class="w-full p-2 border border-gray-300 rounded"
+          [(ngModel)]="hr.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Password</label>
+        <input
+          class="w-full p-2 border border-gray-300 rounded"
+          [(ngModel)]="hr.password"
+          name="password"
+          type="password"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">City</label>
+        <input
+          class="w-full p-2 border border-gray-300 rounded"
+          [(ngModel)]="hr.city"
+          name="city"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2">Country</label>
+        <input
+          class="w-full p-2 border border-gray-300 rounded"
+          [(ngModel)]="hr.country"
+          name="country"
+          required
+        />
+      </div>
+      <div class="flex justify-end">
+        <button
+          type="submit"
+          class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

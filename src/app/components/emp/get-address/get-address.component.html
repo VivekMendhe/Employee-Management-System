@@ -1,0 +1,76 @@
+<div class="max-w-md mx-auto bg-white p-8 rounded-xl mt-20 shadow-lg space-y-4">
+  <h2 class="text-2xl font-bold text-gray-800 text-center">
+    Find Your Address
+  </h2>
+  <!-- <form class="space-y-6" (ngSubmit)="submitForm()"> -->
+  <div class="space-y-4">
+    <!-- Employee Name -->
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700"
+        >Name</label
+      >
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="employeeName"
+        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        required
+      />
+    </div>
+    <!-- [(ngModel)]="employee.name" -->
+
+    <!-- Employee Contact -->
+    <div>
+      <label for="contact" class="block text-sm font-medium text-gray-700"
+        >Pick Date</label
+      >
+      <input
+        type="date"
+        id="date"
+        name="date"
+        [(ngModel)]="date"
+        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        required
+      />
+    </div>
+    @if (errorMessage) {
+    <div class="text-red-500 text-sm">{{ errorMessage }}</div>
+    }
+    <!-- [(ngModel)]="address.city" -->
+  </div>
+
+  <!-- Submit Button -->
+  <!-- type="submit" -->
+  <div class="mt-6">
+    <button
+      (click)="getAddressByNameAndDate()"
+      class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out transform hover:scale-105"
+    >
+      Get Address
+    </button>
+  </div>
+
+  @if (addresses.length) {
+  <div>
+    <h3><strong>Address:</strong></h3>
+    <ul class="flex items-center justify-between">
+      @for (address of addresses; track $index) {
+      <li>
+        <strong> {{ address.city }} </strong>
+      </li>
+      <img src="/icons/map.png" alt="map image" height="50" width="50" />
+      }
+    </ul>
+  </div>
+  }@else if (loading) {
+  <div class="flex justify-center mt-6">
+    <div class="loader"></div>
+  </div>
+  }
+  <!-- </form> -->
+  <!-- <li>
+    {{ address.city }} - {{ address.effectiveDate }} to
+    {{ address.endDate || "Present" }}
+  </li> -->
+</div>

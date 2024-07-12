@@ -1,0 +1,26 @@
+<div class="container mx-auto px-4 py-6">
+  <div class="flex flex-wrap">
+    @for (item of hr; track $index) {
+    <app-hr-details [hr]="item"></app-hr-details>
+    }
+  </div>
+  <div class="container mx-auto flex justify-end px-20 mt-4">
+    <button
+      (click)="openAddHrModal()"
+      class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+    >
+      Create
+    </button>
+  </div>
+
+  @if (showAddHrModal) {
+  <div>
+    <app-add-hr
+      [hr]="selectedHr"
+      (closeModal)="closeAddHrModal()"
+      (hrAdded)="onHrAdded($event)"
+      (hrUpdated)="onHrUpdated($event)"
+    ></app-add-hr>
+  </div>
+  }
+</div>

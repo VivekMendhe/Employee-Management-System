@@ -1,0 +1,26 @@
+<div class="flex h-screen justify-center items-center">
+  <div class="bg-white shadow-lg rounded-lg p-6 w-80">
+    <div class="mb-4">
+      <strong class="text-lg font-bold">Name:</strong>
+      <span class="ml-2 text-gray-800">{{ hrDetails.name }}</span>
+    </div>
+    <div class="mb-4">
+      <strong class="text-lg font-bold">Email:</strong>
+      <span class="ml-2 text-gray-800">{{ hrDetails.email }}</span>
+    </div>
+    <div class="mb-4">
+      <strong class="text-lg font-bold">City:</strong>
+      <span class="ml-2 text-gray-800">{{ hrDetails.city }}</span>
+    </div>
+    <div class="mb-4">
+      <strong class="text-lg font-bold">Country:</strong>
+      <span class="ml-2 text-gray-800">{{ hrDetails.country }}</span>
+    </div>
+    <button
+      (click)="deleteHr()"
+      class="bg-red-500 text-white py-1 px-3 ml-2 rounded hover:bg-red-600 mt-4"
+    >
+      Delete
+    </button>
+  </div>
+</div>
